@@ -1,0 +1,25 @@
+name: CI
+env: 
+  HEROKU_APP_NAME: "codenames-game-api"
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      name: Deploy to Heroku
+    - name: login
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    - name: push
+      uses: actions/heroku@1.0.0
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    - name: db setup
+      run: heroku run rails db:setup
+    
