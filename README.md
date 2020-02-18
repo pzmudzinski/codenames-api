@@ -2,4 +2,4 @@
 
 ## Resetting db
 
-`rake db:reset`
+`rails db:drop db:create db:migrate db:schema:dump db:seed`

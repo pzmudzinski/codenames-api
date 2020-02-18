@@ -44,13 +44,17 @@ if Board.first.nil?
   tiles = words.each_with_index.map do |word, index|
     {
       index: index,
-      assigment: assignments[index],
+      assignment: assignments[index],
       word: word,
-      status: 'default',
-      starting_team: 'blue'
+      status: 'default'
     }
   end
 
-  Board.create(code: 'myboard', grid_size: grid_size, tiles: tiles, status: 'in_progress', starting_team: 'blue')
+  Board.create(code: 'myboard',
+               grid_size: grid_size,
+               tiles: tiles,
+               status: 'in_progress',
+               starting_team: 'blue',
+               current_turn: 'blue')
 
 end

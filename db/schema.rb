@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_122220) do
+ActiveRecord::Schema.define(version: 2020_02_18_150629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "boards", force: :cascade do |t|
-    t.integer "grid_size"
-    t.jsonb "tiles"
-    t.string "starting_team"
-    t.string "code"
-    t.string "status"
+    t.integer "grid_size", default: 5
+    t.jsonb "tiles", null: false
+    t.string "starting_team", default: "blue", null: false
+    t.string "code", null: false
+    t.string "status", default: "in_progress", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "current_turn"
+    t.string "winner"
   end
 
 end
